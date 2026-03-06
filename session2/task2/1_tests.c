@@ -23,6 +23,36 @@ void test_obvious_palindrome(void) {
     TEST_MSG("Expected 'racecar' to be a palindrome");
 }
 
+void test_empty_string(void) {
+    TEST_CHECK(is_palindrome("") == 1);
+    TEST_MSG("Expected '' to be a palindrome");
+}
+
+void test_non_palindrome(void) {
+    TEST_CHECK(is_palindrome("atlanta") == 0);
+    TEST_MSG("Expected 'atlanta' to not be a palindrome");
+}
+
+void test_single_char(void) {
+    TEST_CHECK(is_palindrome("a") == 1);
+    TEST_MSG("Expected 'a' to be a palindrome");
+}
+
+void test_spaces(void) {
+    TEST_CHECK(is_palindrome("a man a plan a canal panama") == 1);
+    TEST_MSG("Expected 'a man a plan a canal panama' to be a palindrome");
+}
+
+void test_even_length(void) {
+    TEST_CHECK(is_palindrome("noon") == 1);
+    TEST_MSG("Expected 'noon' to be a palindrome");
+}
+
+void test_case_sensitivity(void) {
+    TEST_CHECK(is_palindrome("Level") == 1);
+    TEST_MSG("Expected 'Level' to be a palindrome");
+}
+
 /* ============================================================
  * TODO: Add your test functions below
  *
@@ -52,7 +82,13 @@ TEST_LIST = {
      * { "single character", test_single_char },
      * { "empty string", test_empty_string },
      */
-    { NULL, NULL }
+    { "empty string ()", test_empty_string },
+    { "non-palindrome (Atlanta)", test_non_palindrome },
+    { "single character (a)", test_single_char },
+    { "spaces (a man a plan a canal panama)", test_spaces },
+    { "even length palindrome (noon)", test_even_length },
+    { "case sensitivity (Level)", test_case_sensitivity },
+    { NULL,NULL }
 };
 
 /* ============================================================
